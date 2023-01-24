@@ -1,0 +1,92 @@
+Installing Metabase docker  image on QA9
+
+Descriptions
+
+Notes
+
+$ ssh qa9
+
+ 
+
+ 
+
+$ docker pull metabase/metabase:latest
+
+to get the latest Docker image
+
+ 
+
+$ docker run -d -p 3000:3000 --name metabase metabase/metabase
+
+to start the Metabase container on port 3000
+
+
+ 
+
+$ docker logs -f metabase
+
+to view the logs as Metabase initializes
+
+
+ 
+
+Go to browser and hit:  10.173.70.195:3000
+
+ 
+
+If it does not work then check  if port 3000 is opened
+
+$ ssh qa9
+
+ 
+
+ 
+
+$ curl http://localhost:3000
+
+to check if port 3000 is opened 
+
+if we can hit port 3000 
+
+
+ 
+
+it means port 3000 still closes on QA9, then
+
+try ssh tunneling
+
+Access to Metabase on localhost
+
+Description 
+
+Notes
+
+Access to Metabase on localhost
+
+Description 
+
+Notes
+
+Go to local machine terminal and run ssh tunnel cmd
+
+$ ssh qa9 -N -f -L 3000:localhost:3000
+
+to hit your localhost:3000 in the browser and it will tunnel to the qa9
+
+ 
+
+$ ps ax | grep ssh
+
+ 
+
+to stop ssh tunnelling
+
+
+ 
+
+$ kill -9 process_id_of_qa9
+
+ 
+
+
+ 
